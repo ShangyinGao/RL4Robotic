@@ -42,7 +42,7 @@ num_loop_max = 100;
 par_hist = zeros(num_loop_max, 3);
 par_norm_hist = zeros(1, num_loop_max);
 while(~policy_converge)
-    % 
+    % parameter space exploration
     [states, pars] = exploration(par, state_init, num_seq, num_rollouts, sys);
     rewards = rewardCal(states, state_goal, num_seq, num_rollouts);
     par_new = updatePar(par, pars, rewards, num_rollouts_best);
@@ -59,7 +59,6 @@ while(~policy_converge)
     disp(par);
     
     num_loop = num_loop + 1;
-    
 end
 
 % visualize the result
